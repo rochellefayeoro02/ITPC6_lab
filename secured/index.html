@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Registration</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+<div class="auth-wrap">
+
+    <div class="auth">
+
+        <div class="tabs">
+            <a href="login.php">Log in</a>
+            <a href="index.html" class="active">Register</a>
+        </div>
+
+        <h1>Create your account</h1>
+        <p class="lead">Register first, then log in with your email and password.</p>
+
+        <form method="POST" action="regis.php" id="registerForm" autocomplete="on">
+
+            <label for="userName">Username</label>
+            <input type="text" id="userName" name="userName" placeholder="Your username"
+                   minlength="3" maxlength="30" autocomplete="username" required>
+
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="you@example.com"
+                   maxlength="254" autocomplete="email" required>
+
+
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" placeholder="Password"
+                   minlength="8" maxlength="72" autocomplete="new-password" required>
+            <div class="hint">8-72 characters, with at least one letter and one number.</div>
+
+            <label for="confirm_password">Confirm password</label>
+            <input type="password" id="confirm_password" name="confirm_password" placeholder="Repeat password"
+                   minlength="8" maxlength="72" autocomplete="new-password" required>
+
+            <button type="submit" name="register" value="1" class="btn">Register</button>
+        </form>
+
+        <div class="switch">
+            Already registered? <a href="login.php">Log in</a>
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+    document.getElementById("registerForm").addEventListener("submit", function (event) {
+        const password = document.getElementById("password").value;
+        const confirm  = document.getElementById("confirm_password");
+
+        if (password !== confirm.value) {
+            event.preventDefault();
+            alert("Passwords do not match. Please try again.");
+            confirm.value = "";
+            confirm.focus();
+            return;
+        }
+
+        if (!/[A-Za-z]/.test(password) || !/[0-9]/.test(password)) {
+            event.preventDefault();
+            alert("Password must contain at least one letter and one number.");
+        }
+    });
+</script>
+
+</body>
+</html>
