@@ -11,8 +11,6 @@
     var domButton = document.getElementById("domButton");
     var domOutput = document.getElementById("domOutput");
 
-    var status = document.getElementById("status");
-
     function setStatus(text, ok) {
         status.textContent = text;
         status.className = ok ? "success" : "warning";
